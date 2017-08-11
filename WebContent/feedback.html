@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Feedback</title>
+<script>
+	// true on success, false on failure 
+	function validate() {
+        // check whether fullname is given 
+        
+        // check whether feedback is given 
+		return true; 
+	}
+	
+</script>
+</head>
+<body>
+	<h1>FeedBack Form</h1>
+
+	<form action="feedback" onsubmit="return validate()">
+		Fullname<br /> <input type="text" id="fullname" name="fullname"
+			style="width: 400px" />
+		<p />
+		Feedback<br />
+		<textarea id="feedback" name="feedback" rows="5" style="width: 400px"></textarea>
+		<p />
+		<input type="submit" value="Submit" />
+
+	</form>
+
+</body>
+</html>
