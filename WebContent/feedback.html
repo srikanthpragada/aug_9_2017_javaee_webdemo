@@ -3,10 +3,31 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Feedback</title>
+<link rel="stylesheet" href="styles.css"/>
 <script>
 	// true on success, false on failure 
 	function validate() {
         // check whether fullname is given 
+        var fullname = document.getElementById("fullname");
+    	var fullnameError = document.getElementById("fullnameError");
+
+        if ( fullname.value == "")
+      	{
+        	fullnameError.innerText = "Fullname is required!";
+        	fullname.focus();
+        	return false; 
+       	}
+        else
+        	fullnameError.innerText = "";
+        
+        var feedback = document.getElementById("feedback");
+        
+        if ( feedback.value == "")
+      	{
+        	alert("Please enter feedback!");
+        	feedback.focus();
+        	return false; 
+       	}
         
         // check whether feedback is given 
 		return true; 
@@ -17,9 +38,10 @@
 <body>
 	<h1>FeedBack Form</h1>
 
-	<form action="feedback" onsubmit="return validate()">
+	<form action="feedback" onsubmit="return validate()"  method="post">
 		Fullname<br /> <input type="text" id="fullname" name="fullname"
 			style="width: 400px" />
+			<span id="fullnameError" class="error"></span>
 		<p />
 		Feedback<br />
 		<textarea id="feedback" name="feedback" rows="5" style="width: 400px"></textarea>
