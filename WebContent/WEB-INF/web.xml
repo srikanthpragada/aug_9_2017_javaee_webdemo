@@ -5,6 +5,9 @@
     <welcome-file>intr.html</welcome-file>
   </welcome-file-list>
   
+  <session-config>
+    <session-timeout>5</session-timeout>
+  </session-config>
   <servlet>
      <servlet-name>Hello</servlet-name>
      <servlet-class>servlets.HelloServlet</servlet-class>
