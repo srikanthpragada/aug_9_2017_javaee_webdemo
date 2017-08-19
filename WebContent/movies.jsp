@@ -7,6 +7,7 @@
 <title>List of Movies</title>
 </head>
 <body>
+<<<<<<< HEAD
 
 	<%
 		// get city of client by using cookie
@@ -16,11 +17,18 @@
 		
 		if (cookies != null) {
 			for (Cookie c : cookies) {
+=======
+	<%
+		String city = null;
+		if (request.getCookies() != null) {
+			for (Cookie c : request.getCookies()) {
+>>>>>>> 8455dd922238c7e9c355a68bb2b204111c2bc323
 				if (c.getName().equals("city")) {
 					city = c.getValue();
 					break;
 				}
 			}
+<<<<<<< HEAD
 
 		}
 		
@@ -33,3 +41,17 @@
 
 </body>
 </html>
+=======
+		}
+
+		if (city == null)
+			response.sendRedirect("selectcity.html");
+	%>
+
+	<h2>
+		List of Movies in [<%=city%>]
+	</h2>
+
+</body>
+</html>
+>>>>>>> 8455dd922238c7e9c355a68bb2b204111c2bc323
