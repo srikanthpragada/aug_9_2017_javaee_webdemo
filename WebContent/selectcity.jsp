@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-
-
-<%
-   String city = request.getParameter("city");
-   
-   Cookie c = new Cookie("city", city);
-   c.setMaxAge( 7 * 24 * 60 * 60);
-   
-   response.addCookie(c);
-   
-   response.sendRedirect("movies.jsp");
-
-
-%>
-=======
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,4 +19,4 @@
 
 </body>
 </html>
->>>>>>> 8455dd922238c7e9c355a68bb2b204111c2bc323
+

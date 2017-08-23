@@ -4,21 +4,19 @@
   <welcome-file-list>
     <welcome-file>intr.html</welcome-file>
   </welcome-file-list>
-  
   <session-config>
     <session-timeout>5</session-timeout>
   </session-config>
   <servlet>
-     <servlet-name>Hello</servlet-name>
-     <servlet-class>servlets.HelloServlet</servlet-class>
-     <init-param>
-       <param-name>message</param-name>
-       <param-value>Nothing works until you work!</param-value>
-     </init-param>
+    <servlet-name>Hello</servlet-name>
+    <servlet-class>servlets.HelloServlet</servlet-class>
+    <init-param>
+      <param-name>message</param-name>
+      <param-value>Nothing works until you work!</param-value>
+    </init-param>
   </servlet>
-  
   <servlet-mapping>
-     <servlet-name>Hello</servlet-name>
-     <url-pattern>/hello</url-pattern>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
   </servlet-mapping>
 </web-app>
