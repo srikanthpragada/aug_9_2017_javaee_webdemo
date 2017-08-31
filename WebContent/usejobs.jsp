@@ -7,8 +7,15 @@
 <title>Use Job Tags</title>
 </head>
 <body>
+    Select Job :
+    <select>  
+      <aug9:jobs3>
+         <option value="${id}">${title}</option>
+      </aug9:jobs3>
+    </select>
+    
+    
 
-	<aug9:jobs2 title="manager" />
 	<ul>
 		<aug9:jobs3>
 			<li>${title},${minSalary}</li>
