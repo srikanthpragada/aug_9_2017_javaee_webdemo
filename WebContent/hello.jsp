@@ -9,14 +9,22 @@
 <body>
    <h1>Hello </h1>
    
+   <%!
+    void print() {
+	   
+    }
+   %>
    <%
        out.println( request.getParameter("name"));
+       int v = 10;
    %>
    <hr/>
    
    <%
       // java code 
       out.println( new java.util.Date());
+      out.println(v);
+      print();
    %>
 </body>
 </html>
