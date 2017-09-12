@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>webdemo</display-name>
-  <welcome-file-list>
-    <welcome-file>intr.html</welcome-file>
-  </welcome-file-list>
-  <session-config>
-    <session-timeout>5</session-timeout>
-  </session-config>
-  <servlet>
-    <servlet-name>Hello</servlet-name>
-    <servlet-class>servlets.HelloServlet</servlet-class>
-    <init-param>
-      <param-name>message</param-name>
-      <param-value>Nothing works until you work!</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Hello</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>webdemo</display-name>
+	<welcome-file-list>
+		<welcome-file>intr.html</welcome-file>
+	</welcome-file-list>
+
+
+	<listener>
+		<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>metro-servlet</servlet-name>
+		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>metro-servlet</servlet-name>
+		<url-pattern>/jaxws/*</url-pattern>
+	</servlet-mapping>
+
 </web-app>
