@@ -4,5 +4,8 @@
 
 	<endpoint name="HelloService" implementation="jaxws.HelloService"
 		url-pattern="/jaxws/hello" />
+		
+	<endpoint name="JobsService" implementation="jaxws.JobsService"
+		url-pattern="/jaxws/jobs" />
 
 </endpoints> 
