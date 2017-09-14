@@ -7,5 +7,4 @@
 		
 	<endpoint name="JobsService" implementation="jaxws.JobsService"
 		url-pattern="/jaxws/jobs" />
-
 </endpoints> 
