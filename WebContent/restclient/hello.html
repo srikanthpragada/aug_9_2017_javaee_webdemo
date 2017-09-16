@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="../jquery/jquery-3.2.1.js"></script>
+<script>
+   function  callHello() {
+	   $.get("http://localhost:8888/webdemo/rest/hello", {}, showResult);
+   }
+   
+   function showResult(data) {
+	  $("#message").html(data);
+   }
+</script>
+
+</head>
+<body>
+  <h1  id="message"></h1>
+  <button  onclick="callHello()">Call Hello Service</button>
+
+</body>
+</html>

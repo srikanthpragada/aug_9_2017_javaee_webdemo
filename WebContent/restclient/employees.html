@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employees</title>
+<script src="../jquery/jquery-3.2.1.js"></script>
+<script>
+   function  getEmployees() {
+	   $.getJSON("http://localhost:8888/webdemo/rest/employees/" + $("#dept").val(), {}, showResult);
+   }
+   
+   function showResult(employees) {
+	   $("#rows").html("");
+  	   $.each(employees,
+			   function(idx,emp) {
+		           var row = "<tr><td>" + emp.id + "</td><td>" + emp.name + "</td><td>" + emp.salary 
+		               + "</td><td>" + emp.hiredate + "</td></tr>";
+		           $("#rows").append(row);
+        	   }
+	   );
+	   
+	   $("#employees").css("visibility","visible");
+	  
+   }
+</script>
+
+</head>
+<body>
+  <h1>Employees Client</h1>
+  <input type="text" placeholder="Department Id" id="dept"/> 
+  <button  onclick="getEmployees()">Get Employees</button>
+  
+  <p></p>
+  <table border="1" id="employees" width="100%" style="visibility:hidden">
+     <thead>
+     <tr><th>Employee Id </th><th>Name </th><th>Salary </th><th>Hire Date </th></tr>
+     </thead>
+     <tbody id="rows">
+     </tbody>
+  </table>
+
+</body>
+</html>
