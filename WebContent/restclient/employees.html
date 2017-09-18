@@ -3,14 +3,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employees</title>
+<link rel="stylesheet" href="../styles.css"/>
 <script src="../jquery/jquery-3.2.1.js"></script>
 <script>
    function  getEmployees() {
-	   $.getJSON("http://localhost:8888/webdemo/rest/employees/" + $("#dept").val(), {}, showResult);
+	   $.getJSON("http://localhost:8888/webdemo/rest/employees/dept/" + $("#dept").val(), {}, showResult);
    }
    
    function showResult(employees) {
-	   $("#rows").html("");
+	   
+	   $("#rows").html("");  // clear table 
+	   $("#employees").css("visibility","hidden");
+	   $("#error").html("");
+	   
+	   if ( employees.length == 0)
+       {
+          $("#error").html("Sorry! No employees found in the given department!");
+          return;
+	   }
+	   	   
+	  
   	   $.each(employees,
 			   function(idx,emp) {
 		           var row = "<tr><td>" + emp.id + "</td><td>" + emp.name + "</td><td>" + emp.salary 
@@ -29,7 +41,8 @@
   <h1>Employees Client</h1>
   <input type="text" placeholder="Department Id" id="dept"/> 
   <button  onclick="getEmployees()">Get Employees</button>
-  
+  <p></p>
+  <div id="error" class="error"></div>
   <p></p>
   <table border="1" id="employees" width="100%" style="visibility:hidden">
      <thead>

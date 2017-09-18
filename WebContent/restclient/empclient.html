@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employees</title>
+<link rel="stylesheet" href="../styles.css"/>
+<script src="../jquery/jquery-3.2.1.js"></script>
+<script>
+   function  getEmployee() {
+	   $.ajax(
+         {
+		   dataType: "json",
+		   url: "http://localhost:8888/webdemo/rest/employees/" + $("#id").val(),
+		   success: showResult,
+		   error : showError
+		 }
+      );
+	   
+   }
+   
+   function showResult(employee) {
+	   var result = "Name : "  + employee.name + "<p></p>"
+	               + "Salary :" + employee.salary + "<p></p>"  
+	               + "Hire Date : " +  employee.hiredate;
+	               
+       $("#details").html(result);
+       $("#error").html("");
+       
+   }
+   
+   function showError() {
+	   $("#details").html("");
+       $("#error").html("Employee Not Found");
+   }
+   
+   function  updateSalary() {
+	   $.ajax(
+         {
+           method : "PUT",
+           data : { "newSalary" : 10000},
+		   url: "http://localhost:8888/webdemo/rest/employees/" + $("#id").val(),
+		   success: updated,
+		   error : showUpdationError
+		 }
+      );
+   }
+   
+   function showUpdationError() {
+        console.log("Error during update");
+   }
+   
+   function updated() {
+       console.log("Updated Successfully");
+  }
+   
+   
+</script>
+
+</head>
+<body>
+  <h1>Employee Client</h1>
+  <input type="text" placeholder="Employee Id" id="id"/> 
+  <button  onclick="getEmployee()">Get Details</button>
+  <button  onclick="updateSalary()">Update</button>
+  <p></p>
+  <div id="error" class="error"></div>
+  <div id="details"></div>
+  
+  
+
+</body>
+</html>
