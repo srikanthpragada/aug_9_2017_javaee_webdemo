@@ -1,10 +1,14 @@
 package rest;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
@@ -124,28 +128,67 @@ public class EmpService {
 	@Path("/{id}")
 	public void updateSalary(@PathParam("id") String id,
 			 @FormParam("newSalary") int newSalary) {
-		System.out.println(id);
-		System.out.println(newSalary);
+		
+		try {
+			// 1. Load driver
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			// 2. connect to oracle
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+
+			// 3. update salary
+			PreparedStatement ps = con.prepareStatement(
+					"update employees set salary = ? where employee_id = ?");
+			
+			ps.setInt(1,newSalary);
+			ps.setString(2,id);
+			
+			int count = ps.executeUpdate();
+			
+			if (count == 0)
+				throw new NotFoundException();
+			
+			// 4. close
+			con.close();
+		} catch (SQLException | ClassNotFoundException ex) {
+			throw new InternalServerErrorException();
+		}
+		
+		
+	}
+
+	
+	@DELETE 
+	@Path("/{id}")
+	public void deleteEmployee(@PathParam("id") String id) {
+		try {
+			// 1. Load driver
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			// 2. connect to oracle
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+
+			// 3. update salary
+			PreparedStatement ps = con.prepareStatement(
+					"delete from employees where employee_id = ?");
+			
+			ps.setString(1,id);
+			
+			int count = ps.executeUpdate();
+			
+			if (count == 0)
+				throw new NotFoundException();
+			
+			// 4. close
+			con.close();
+		} catch (SQLException | ClassNotFoundException ex) {
+			throw new InternalServerErrorException();
+		}
+		
+		
 	}
 	
+	
+	
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

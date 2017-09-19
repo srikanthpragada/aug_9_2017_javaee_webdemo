@@ -34,10 +34,13 @@
    }
    
    function  updateSalary() {
+	   $("#error").html("");
+	   $("#details").text("");
+	   
 	   $.ajax(
          {
            method : "PUT",
-           data : { "newSalary" : 10000},
+           data : { "newSalary" : $("#newSalary").val()},
 		   url: "http://localhost:8888/webdemo/rest/employees/" + $("#id").val(),
 		   success: updated,
 		   error : showUpdationError
@@ -45,12 +48,15 @@
       );
    }
    
-   function showUpdationError() {
-        console.log("Error during update");
+   function showUpdationError(jqXhr) {
+        if ( jqXhr.status == 404)
+        	 $("#error").html("Employee Id Not Found!");
+        else
+        	 $("#error").html("Couldn't update salary due to error");
    }
    
    function updated() {
-       console.log("Updated Successfully");
+	   $("#details").text("Updated Successfully!");
   }
    
    
@@ -59,7 +65,9 @@
 </head>
 <body>
   <h1>Employee Client</h1>
-  <input type="text" placeholder="Employee Id" id="id"/> 
+  <input type="text" placeholder="Employee Id" id="id"/>
+  <input type="text" placeholder="New Salary" id="newSalary"/>
+   
   <button  onclick="getEmployee()">Get Details</button>
   <button  onclick="updateSalary()">Update</button>
   <p></p>
