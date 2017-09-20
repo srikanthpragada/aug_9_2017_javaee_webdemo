@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"  xmlns:f="http://java.sun.com/jsf/core" >
+<head>
+<title>Interest Calculation</title>
+<style>
+  .bright {
+      color :blue;
+      font-family : verdana;
+      foht-size : 14pt;
+  }
+</style>
+</head>
+<body>
+	<h2>
+		Interest Calculation
+	</h2>
+	
+	<h:form>
+	  Amount <br/>
+	  <h:inputText value="#{interestBean.amount}"></h:inputText>
+	  <p></p>
+	  Rate <br/>
+	  <h:inputText value="#{interestBean.rate}"></h:inputText>
+	  <p></p>
+	  <h:commandButton value="Calculate"
+	         actionListener="#{interestBean.calculate}" ></h:commandButton>
+      <p></p>	         
+      <h:outputText  rendered="#{interestBean.interest > 0}"
+                     value="#{interestBean.interest}"  styleClass="bright"  />	         
+	</h:form>
+	
+	 
+
+
+</body>
+</html>

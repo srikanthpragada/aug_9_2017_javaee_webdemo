@@ -8,7 +8,7 @@
 		<welcome-file>intr.html</welcome-file>
 	</welcome-file-list>
 
-
+<!-- 
 	<listener>
 		<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
 	</listener>
@@ -37,5 +37,20 @@
 		<servlet-name>Jersey</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
+	
+-->
+
+	 <servlet>
+		<servlet-name>jsf</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>jsf</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+	
+	
 
 </web-app>
