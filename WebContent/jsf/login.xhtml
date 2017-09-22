@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Login</title>
+</head>
+<body>
+	<h2>
+		Login
+	</h2>
+	<h:form id="loginForm">
+	  Loginname <br/>
+	  <h:inputText id="loginName"  value="#{user.loginName}">
+	      <f:validateBean></f:validateBean>
+	  </h:inputText>
+	  <h:message for="loginName"></h:message>
+	  <p></p>
+	  Password <br/>
+	  <h:inputSecret id="password"  value="#{user.password}">
+	      <f:validateBean></f:validateBean>
+	  </h:inputSecret>
+	  <h:message for="password"></h:message>
+	  <p></p>
+	  <h:commandButton id="cmdLogin" value="Login"  action="#{user.login}"></h:commandButton>
+      <p></p>	         
+      <h:outputText  value="#{user.message}" />	         
+	</h:form>
+	
+	 
+
+
+</body>
+</html>

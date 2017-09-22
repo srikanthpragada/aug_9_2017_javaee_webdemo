@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:h="http://java.sun.com/jsf/html"  xmlns:f="http://java.sun.com/jsf/core" >
+<html xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
 <head>
 <title>Interest Calculation</title>
 <style>
@@ -15,14 +17,18 @@
 		Interest Calculation
 	</h2>
 	
-	<h:form>
+	<h:form id="interestForm">
 	  Amount <br/>
-	  <h:inputText value="#{interestBean.amount}"></h:inputText>
+	  <h:inputText id="amount" p:type="number" p:min="10000" p:required="required" value="#{interestBean.amount}"></h:inputText>
 	  <p></p>
 	  Rate <br/>
-	  <h:inputText value="#{interestBean.rate}"></h:inputText>
+	  <h:inputText id="rate" value="#{interestBean.rate}"
+	               validatorMessage="Invalid Rate. Must be between 5 and 50" >
+	      <f:validateDoubleRange minimum="5" maximum="50"></f:validateDoubleRange>
+	  </h:inputText>
+	  <h:message for="rate"></h:message>
 	  <p></p>
-	  <h:commandButton value="Calculate"
+	  <h:commandButton id="cmdCalculate" value="Calculate"
 	         actionListener="#{interestBean.calculate}" ></h:commandButton>
       <p></p>	         
       <h:outputText  rendered="#{interestBean.interest > 0}"

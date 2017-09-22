@@ -31,6 +31,7 @@ public class InterestBean {
 		this.interest = interest;
 	}
 	
+	// ActionListener
 	public void calculate(ActionEvent evt) {
 		interest = amount * rate / 100; 
 	}
