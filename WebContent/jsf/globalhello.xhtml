@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title></title>
+</head>
+<body>
+ <f:view locale="#{facesContext.externalContext.request.locale}">
+    <f:loadBundle var="msgs" basename="messages"></f:loadBundle>
+
+	<h1>
+		#{msgs.hello}
+	</h1>
+	 
+</f:view>
+
+</body>
+</html>
